@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const User = require("./models/user.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const path = require("path");
 
 app.use(cors());
 app.use(express.json());
@@ -88,8 +89,8 @@ app.post("/api/quote", async (req, res) => {
   }
 });
 
-app.get("*", () => {
-  // serve index
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "static/index.html"));
 });
 
 app.listen(PORT, () => console.log("listening on port " + PORT));
