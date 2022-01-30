@@ -21,7 +21,7 @@ const Dashboard = () => {
   }, []);
 
   async function populateQuote() {
-    const req = await fetch("http://localhost:1337/api/quote", {
+    const req = await fetch("/api/quote", {
       headers: {
         "x-access-token": localStorage.getItem("token"),
       },

@@ -9,6 +9,7 @@ const bcrypt = require("bcryptjs");
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static("static"));
 
 mongoose.connect("mongodb://localhost:27017/mern-app");
 
@@ -85,6 +86,10 @@ app.post("/api/quote", async (req, res) => {
     console.log(error);
     res.json({ status: "error", error: "invalid token" });
   }
+});
+
+app.get("*", () => {
+  // serve index
 });
 
 app.listen(PORT, () => console.log("listening on port " + PORT));
